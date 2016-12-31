@@ -1,7 +1,7 @@
 var App = App || {};
 App.WebSocketService = ( function() {
 
-    var websocketEndpoint = "ws://localhost:8080/echo";
+    var websocketEndpoint = "ws://localhost:8080/websockets/echo";
     var websocket;
 
     var openConnection = function() {
@@ -24,7 +24,6 @@ App.WebSocketService = ( function() {
 
             console.log('Websocket Message Received.');
             $('#receiveLine').val(evt.data);
-            $('#sendLine').val('');
 
         };
         websocket.onerror = function(evt) {
@@ -33,7 +32,7 @@ App.WebSocketService = ( function() {
     };
 
     var sendMessage = function(messageToSend) {
-
+        console.log("sending message: " + messageToSend);
         websocket.send(messageToSend);
     };
 
